@@ -1,10 +1,11 @@
-#include <iostream>
-#include <iomanip>
-#include <limits>
+#include <strings.h>
 #include <cstdlib>
 #include <cerrno>
 #include <cctype>
-#include <strings.h>
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <limits>
 
 bool	str_to_int(int & i, std::string const & s) {
 	char	*end;
