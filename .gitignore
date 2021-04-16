@@ -1,6 +1,7 @@
 en.subject.pdf
 *CPPLINT.cfg
 ex00/convert
+ex01/serialize
 
 # Created by https://www.toptal.com/developers/gitignore/api/c++,vim
 # Edit at https://www.toptal.com/developers/gitignore?templates=c++,vim
