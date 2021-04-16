@@ -1,4 +1,5 @@
 #include <iostream>
+#include <exception>
 #include <cstdlib>
 #include <ctime>
 
@@ -54,7 +55,24 @@ void	identify_from_pointer(Base * p) {
 }
 
 void	identify_from_reference(Base & p) {
-	identify_from_pointer(&p);
+	try {
+		__attribute__((unused)) A & a_ref = dynamic_cast<A &>(p);
+		std::cout << "A\n";
+		return;
+	}
+	catch (std::exception &e) {;}
+	try {
+		__attribute__((unused)) B & b_ref = dynamic_cast<B &>(p);
+		std::cout << "B\n";
+		return;
+	}
+	catch (std::exception &e) {;}
+	try {
+		__attribute__((unused)) C & c_ref = dynamic_cast<C &>(p);
+		std::cout << "C\n";
+		return;
+	}
+	catch (std::exception &e) {;}
 }
 
 int	main() {
