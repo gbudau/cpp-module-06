@@ -64,4 +64,5 @@ int	main() {
 	identify_from_pointer(base_ptr);
 	std::cout << "Identify from reference:\n";
 	identify_from_reference(*base_ptr);
+	delete base_ptr;
 }
