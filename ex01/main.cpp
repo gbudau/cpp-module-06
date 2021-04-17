@@ -16,7 +16,7 @@ char	*make_rand_str(size_t len) {
 	char		*str = new char[len + 1];
 
 	if (!seeded) {
-		std::srand(std::time(nullptr));
+		std::srand(std::time(0));
 		seeded = true;
 	}
 	for (size_t i = 0; i < len; i++) {
@@ -35,7 +35,7 @@ void	*serialize(void)  {
 	int			rand_int;
 
 	if (!seeded) {
-		std::srand(std::time(nullptr));
+		std::srand(std::time(0));
 		seeded = true;
 	}
 	rand_int = 1 + std::rand() % (max_str_len - 1);
