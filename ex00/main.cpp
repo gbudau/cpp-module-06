@@ -16,9 +16,6 @@ bool	str_to_int(int & i, std::string const & s) {
 	if (errno) {
 		return false;
 	}
-	while (std::isspace(*end)) {
-		end++;
-	}
 	if (*end ||
 			l < std::numeric_limits<int>::min() ||
 			l > std::numeric_limits<int>::max()) {
@@ -37,9 +34,6 @@ bool	str_to_float(float & f, std::string const & s) {
 		return false;
 	}
 	end++;
-	while (std::isspace(*end)) {
-		end++;
-	}
 	if (*end) {
 		return false;
 	}
@@ -55,9 +49,6 @@ bool	str_to_double(double & d, std::string const & s) {
 		return false;
 	}
 	if (*end == 'f') {
-		end++;
-	}
-	while (std::isspace(*end)) {
 		end++;
 	}
 	if (*end) {
@@ -119,7 +110,7 @@ void	convert_char(char c) {
 	double	d;
 
 	if (std::isprint(c)) {
-		std::cout << "char: " << c << "\n";
+		std::cout << "char: \'" << c << "\'\n";
 	} else {
 		std::cout << "char: Non displayable\n";
 	}
@@ -150,7 +141,7 @@ void	convert_int(int i) {
 	} else {
 		c = static_cast<char>(i);
 		if (std::isprint(c)) {
-			std::cout << "char: " << c << "\n";
+			std::cout << "char: \'" << c << "\'\n";
 		} else {
 			std::cout << "char: Non displayable\n";
 		}
@@ -174,7 +165,7 @@ void	convert_float(float	f, size_t precision) {
 	} else {
 		c = static_cast<char>(f);
 		if (std::isprint(c)) {
-			std::cout << "char: " << c << "\n";
+			std::cout << "char: \'" << c << "\'\n";
 		} else {
 			std::cout << "char: Non displayable\n";
 		}
@@ -203,7 +194,7 @@ void	convert_double(double d, size_t precision) {
 	} else {
 		c = static_cast<char>(d);
 		if (std::isprint(c)) {
-			std::cout << "char: " << c << "\n";
+			std::cout << "char: \'" << c << "\'\n";
 		} else {
 			std::cout << "char: Non displayable\n";
 		}
@@ -252,7 +243,7 @@ void	convert_arg(std::string const & arg) {
 	float	f;
 	double	d;
 
-	if (is_strtod_special(arg)) {
+	if (is_strtod_special(arg) || std::isspace(*arg.c_str())) {
 		print_impossible();
 	} else if (is_nan(arg)) {
 		print_nan();
