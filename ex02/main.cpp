@@ -21,7 +21,7 @@ Base *	generate(void) {
 	static bool	seeded = false;
 
 	if (!seeded) {
-		std::srand(std::time(nullptr));
+		std::srand(std::time(0));
 		seeded = true;
 	}
 	int	r = rand() % 3;
